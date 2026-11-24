@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <div class="page__header">
+    <div>
+      <h1 class="page__title">Продукти та інгредієнти <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Склад страв: що і де використовується</p>
+    </div>
+    <a href="{% url 'kitchen:ingredient-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> Додати інгредієнт</a>
+  </div>
+
+  <form action="" method="get" class="search-bar">
+    <svg class="i search-bar__icon"><use href="#i-search"/></svg>
+    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Пошук інгредієнта…" class="search-bar__input">
+    <button type="submit" class="btn-main">Знайти</button>
+  </form>
+
+  <div class="table-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Інгредієнт</th>
+          <th>Використовується в</th>
+          <th class="data-table__num">Страв</th>
+          <th class="data-table__actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ingredient in ingredient_list %}
+          <tr>
+            <td class="data-table__name"><span class="thumb thumb--olive thumb--sm"><svg class="i"><use href="#i-ingredient"/></svg></span> {{ ingredient.name }}</td>
+            <td>
+              {% with dishes=ingredient.dishes.all %}
+                <div class="chips">
+                  {% for dish in dishes %}<span class="chip{% if forloop.counter > 4 %} chip--extra{% endif %}">{{ dish.name }}</span>{% empty %}<span class="muted">ще не використовується</span>{% endfor %}
+                  {% if dishes|length > 4 %}<button type="button" class="chip chip--more" onclick="this.parentElement.classList.toggle('chips--open')"><span class="chip--more__closed">ще {{ dishes|length|add:"-4" }}…</span><span class="chip--more__open">згорнути</span></button>{% endif %}
+                </div>
+              {% endwith %}
+            </td>
+            <td class="data-table__num"><span class="count-pill">{{ ingredient.dishes.all|length }}</span></td>
+            <td class="data-table__actions">
+              <span class="actions">
+                <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="icon-btn icon-btn--edit" title="Редагувати" aria-label="Редагувати"><svg class="i"><use href="#i-edit"/></svg></a>
+                <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="icon-btn icon-btn--delete" title="Видалити" aria-label="Видалити"><svg class="i"><use href="#i-trash"/></svg></a>
+              </span>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4" class="empty-state"><svg class="i"><use href="#i-empty"/></svg> Інгредієнтів не знайдено.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

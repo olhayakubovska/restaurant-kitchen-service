@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <a href="{% url 'kitchen:dish-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До списку страв</a>
+  <form action="" method="post" class="confirm-card">
+    {% csrf_token %}
+    <span class="confirm-card__icon"><svg class="i"><use href="#i-trash"/></svg></span>
+    <h1 class="confirm-card__title">Видалити страву?</h1>
+    <p>Страву <strong>{{ object.name }}</strong> буде видалено з меню. Цю дію не можна скасувати.</p>
+    <ul class="confirm-card__facts">
+      <li><svg class="i"><use href="#i-category"/></svg> {{ object.dish_category.name }}</li>
+      <li><svg class="i"><use href="#i-price"/></svg> {{ object.price|floatformat:2 }} грн</li>
+      <li><svg class="i"><use href="#i-info"/></svg> Кухарі та інгредієнти залишаться в системі</li>
+    </ul>
+    <div class="form-actions">
+      <button type="submit" class="btn-danger-main"><svg class="i"><use href="#i-trash"/></svg> Так, видалити</button>
+      <a href="{% url 'kitchen:dish-list' %}" class="btn-ghost">Скасувати</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

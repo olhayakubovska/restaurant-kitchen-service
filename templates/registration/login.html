@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+<div class="auth">
+  <form method="post" action="{% url 'login' %}" class="auth-card">
+    {% csrf_token %}
+    <span class="auth-card__logo"><svg class="i"><use href="#i-logo"/></svg></span>
+    <h1 class="auth-card__title">Вхід на кухню</h1>
+    <p class="auth-card__sub">
+      {% if next and not user.is_authenticated %}Увійдіть, щоб переглянути цю сторінку.{% else %}Увійдіть під своїм логіном кухаря.{% endif %}
+    </p>
+    {% if form.errors %}
+      <div class="form-error"><svg class="i"><use href="#i-alert"/></svg> Неправильний логін або пароль. Спробуйте ще раз.</div>
+    {% endif %}
+    {{ form|crispy }}
+    <input type="hidden" name="next" value="{{ next }}" />
+    <button type="submit" class="btn-main btn-block"><svg class="i"><use href="#i-login"/></svg> Увійти</button>
+    <p class="auth-card__hint"><svg class="i"><use href="#i-info"/></svg> Немає акаунта? Попросіть шефа додати вас до команди.</p>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <div class="page__header">
+    <div>
+      <h1 class="page__title">Команда кухарів <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Хто працює на кухні та за які страви відповідає</p>
+    </div>
+    <a href="{% url 'kitchen:cook-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> Новий співробітник</a>
+  </div>
+
+  <form action="" method="get" class="search-bar">
+    <svg class="i search-bar__icon"><use href="#i-search"/></svg>
+    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Пошук кухаря за логіном…" class="search-bar__input">
+    <button type="submit" class="btn-main">Знайти</button>
+  </form>
+
+  <div class="card-grid cooks-grid">
+    {% for cook in cook_list %}
+      {% with num=cook.dishes.all|length %}
+      <div class="card cook-card">
+        {% if cook.is_superuser %}<span class="role-badge"><svg class="i"><use href="#i-shield"/></svg> Адмін</span>{% endif %}
+        {% if cook.photo %}<img src="{{ cook.photo.url }}" alt="{{ cook.get_full_name|default:cook.username }}" class="avatar avatar--xl">{% else %}<div class="avatar avatar--xl">{{ cook.first_name|default:cook.username|first|upper }}</div>{% endif %}
+        <h2 class="cook-card__name">
+          {% if cook.first_name %}{{ cook.first_name }}{% if cook.last_name %} {{ cook.last_name|first }}.{% endif %}{% else %}{{ cook.username }}{% endif %}
+        </h2>
+
+        <div class="cook-card__stats">
+          <div><strong>{{ cook.experience }}</strong><span>{% if cook.experience == 1 %}рік{% elif cook.experience >= 2 and cook.experience <= 4 %}роки{% else %}років{% endif %} досвіду</span></div>
+          <div><strong>{{ num }}</strong><span>{% if num == 1 %}страва{% elif num >= 2 and num <= 4 %}страви{% else %}страв{% endif %}</span></div>
+        </div>
+
+        <ul class="info-list">
+          <li><svg class="i"><use href="#i-user"/></svg> {{ cook.username }}</li>
+          <li><svg class="i"><use href="#i-mail"/></svg> {% if cook.email %}{{ cook.email }}{% else %}<span class="muted">пошту не вказано</span>{% endif %}</li>
+          <li><svg class="i"><use href="#i-calendar"/></svg> у команді з {{ cook.date_joined|date:"d.m.Y" }}</li>
+        </ul>
+
+        <p class="mini-title"><svg class="i"><use href="#i-dish"/></svg> Відповідає за:</p>
+        {% with dishes=cook.dishes.all %}
+                <div class="chips">
+                  {% for dish in dishes %}<span class="chip{% if forloop.counter > 4 %} chip--extra{% endif %}">{{ dish.name }}</span>{% empty %}<span class="muted">поки немає страв</span>{% endfor %}
+                  {% if dishes|length > 4 %}<button type="button" class="chip chip--more" onclick="this.parentElement.classList.toggle('chips--open')"><span class="chip--more__closed">ще {{ dishes|length|add:"-4" }}…</span><span class="chip--more__open">згорнути</span></button>{% endif %}
+                </div>
+        {% endwith %}
+      </div>
+      {% endwith %}
+    {% empty %}
+      <p class="empty-state empty-state--big"><svg class="i"><use href="#i-empty"/></svg> <span>Кухарів не знайдено.</span></p>
+    {% endfor %}
+  </div>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}
