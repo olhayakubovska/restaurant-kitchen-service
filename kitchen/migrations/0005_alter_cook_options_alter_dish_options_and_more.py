@@ -17,36 +17,36 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name="cook",
-            options={"verbose_name": "кухар", "verbose_name_plural": "кухарі"},
+            options={"verbose_name": "cook", "verbose_name_plural": "cooks"},
         ),
         migrations.AlterModelOptions(
             name="dish",
             options={
                 "ordering": ["name"],
-                "verbose_name": "страва",
-                "verbose_name_plural": "страви",
+                "verbose_name": "dish",
+                "verbose_name_plural": "dishes",
             },
         ),
         migrations.AlterModelOptions(
             name="dishcategory",
             options={
                 "ordering": ["name"],
-                "verbose_name": "категорія страв",
-                "verbose_name_plural": "категорії страв",
+                "verbose_name": "dish category",
+                "verbose_name_plural": "dish categories",
             },
         ),
         migrations.AlterModelOptions(
             name="ingredient",
             options={
                 "ordering": ["name"],
-                "verbose_name": "інгредієнт",
-                "verbose_name_plural": "інгредієнти",
+                "verbose_name": "ingredient",
+                "verbose_name_plural": "ingredients",
             },
         ),
         migrations.AlterField(
             model_name="cook",
             name="experience",
-            field=models.PositiveIntegerField(default=0, verbose_name="Досвід, років"),
+            field=models.PositiveIntegerField(default=0, verbose_name="Experience, years"),
         ),
         migrations.AlterField(
             model_name="dish",
@@ -55,13 +55,13 @@ class Migration(migrations.Migration):
                 blank=True,
                 related_name="dishes",
                 to=settings.AUTH_USER_MODEL,
-                verbose_name="Відповідальні кухарі",
+                verbose_name="Responsible cooks",
             ),
         ),
         migrations.AlterField(
             model_name="dish",
             name="description",
-            field=models.TextField(blank=True, max_length=255, verbose_name="Опис"),
+            field=models.TextField(blank=True, max_length=255, verbose_name="Description"),
         ),
         migrations.AlterField(
             model_name="dish",
@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
                 on_delete=django.db.models.deletion.PROTECT,
                 related_name="dishes",
                 to="kitchen.dishcategory",
-                verbose_name="Тип страви",
+                verbose_name="Dish type",
             ),
         ),
         migrations.AlterField(
@@ -80,33 +80,33 @@ class Migration(migrations.Migration):
                 blank=True,
                 related_name="dishes",
                 to="kitchen.ingredient",
-                verbose_name="Інгредієнти",
+                verbose_name="Ingredients",
             ),
         ),
         migrations.AlterField(
             model_name="dish",
             name="name",
             field=models.CharField(
-                max_length=255, unique=True, verbose_name="Назва страви"
+                max_length=255, unique=True, verbose_name="Dish name"
             ),
         ),
         migrations.AlterField(
             model_name="dish",
             name="price",
-            field=models.DecimalField(verbose_name="Ціна, грн"),
+            field=models.DecimalField(verbose_name="Price, UAH"),
         ),
         migrations.AlterField(
             model_name="dishcategory",
             name="name",
             field=models.CharField(
-                max_length=255, unique=True, verbose_name="Назва категорії"
+                max_length=255, unique=True, verbose_name="Category name"
             ),
         ),
         migrations.AlterField(
             model_name="ingredient",
             name="name",
             field=models.CharField(
-                max_length=255, unique=True, verbose_name="Назва інгредієнта"
+                max_length=255, unique=True, verbose_name="Ingredient name"
             ),
         ),
     ]

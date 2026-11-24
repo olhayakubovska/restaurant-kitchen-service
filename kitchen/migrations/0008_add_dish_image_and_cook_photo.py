@@ -14,14 +14,14 @@ class Migration(migrations.Migration):
             model_name="cook",
             name="photo",
             field=models.ImageField(
-                blank=True, upload_to="cooks/", verbose_name="Фото"
+                blank=True, upload_to="cooks/", verbose_name="Photo"
             ),
         ),
         migrations.AddField(
             model_name="dish",
             name="image",
             field=models.ImageField(
-                blank=True, upload_to="dishes/", verbose_name="Фото страви"
+                blank=True, upload_to="dishes/", verbose_name="Dish photo"
             ),
         ),
     ]

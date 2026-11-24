@@ -30,13 +30,13 @@ class LoggedInTestCase(TestCase):
         self.user = Cook.objects.create_user(username="chef", password="test-pass-1")
         self.client.force_login(self.user)
 
-        self.soups = DishCategory.objects.create(name="Супи")
-        self.desserts = DishCategory.objects.create(name="Десерти")
+        self.soups = DishCategory.objects.create(name="Soups")
+        self.desserts = DishCategory.objects.create(name="Desserts")
         self.borscht = Dish.objects.create(
-            name="Борщ", price=Decimal("140"), dish_category=self.soups
+            name="Borscht", price=Decimal("140"), dish_category=self.soups
         )
         self.napoleon = Dish.objects.create(
-            name="Наполеон", price=Decimal("120"), dish_category=self.desserts
+            name="Napoleon", price=Decimal("120"), dish_category=self.desserts
         )
 
 
@@ -57,7 +57,7 @@ class DishListTests(LoggedInTestCase):
     url = reverse("kitchen:dish-list")
 
     def test_search_by_name(self):
-        response = self.client.get(self.url, {"name": "Бор"})
+        response = self.client.get(self.url, {"name": "Bor"})
         self.assertEqual(list(response.context["dish_list"]), [self.borscht])
 
     def test_filter_by_category(self):
@@ -71,7 +71,7 @@ class DishListTests(LoggedInTestCase):
     def test_pagination(self):
         for i in range(12):
             Dish.objects.create(
-                name=f"Страва {i}", price=Decimal("10"), dish_category=self.soups
+                name=f"Dish {i}", price=Decimal("10"), dish_category=self.soups
             )
         response = self.client.get(self.url)
         self.assertTrue(response.context["is_paginated"])
@@ -82,15 +82,15 @@ class DishCrudTests(LoggedInTestCase):
     def test_create_dish(self):
         response = self.client.post(
             reverse("kitchen:dish-create"),
-            {"name": "Вареники", "price": "125", "dish_category": self.soups.pk},
+            {"name": "Varenyky", "price": "125", "dish_category": self.soups.pk},
         )
         self.assertRedirects(response, reverse("kitchen:dish-list"))
-        self.assertTrue(Dish.objects.filter(name="Вареники").exists())
+        self.assertTrue(Dish.objects.filter(name="Varenyky").exists())
 
     def test_update_dish(self):
         self.client.post(
             reverse("kitchen:dish-update", args=[self.borscht.pk]),
-            {"name": "Борщ", "price": "150", "dish_category": self.soups.pk},
+            {"name": "Borscht", "price": "150", "dish_category": self.soups.pk},
         )
         self.borscht.refresh_from_db()
         self.assertEqual(self.borscht.price, Decimal("150"))
@@ -107,10 +107,10 @@ class DishCategoryDeleteTests(LoggedInTestCase):
             follow=True,
         )
         self.assertTrue(DishCategory.objects.filter(pk=self.soups.pk).exists())
-        self.assertContains(response, "Неможливо видалити")
+        self.assertContains(response, "Cannot delete")
 
     def test_empty_category_is_deleted(self):
-        empty = DishCategory.objects.create(name="Напої")
+        empty = DishCategory.objects.create(name="Drinks")
         self.client.post(reverse("kitchen:dish-category-delete", args=[empty.pk]))
         self.assertFalse(DishCategory.objects.filter(pk=empty.pk).exists())
 
@@ -124,9 +124,9 @@ class CookAndIngredientTests(LoggedInTestCase):
         )
 
     def test_ingredient_search(self):
-        Ingredient.objects.create(name="Томати")
-        Ingredient.objects.create(name="Бекон")
-        response = self.client.get(reverse("kitchen:ingredient-list"), {"name": "Том"})
+        Ingredient.objects.create(name="Tomatoes")
+        Ingredient.objects.create(name="Bacon")
+        response = self.client.get(reverse("kitchen:ingredient-list"), {"name": "Tom"})
         self.assertEqual(
-            [i.name for i in response.context["ingredient_list"]], ["Томати"]
+            [i.name for i in response.context["ingredient_list"]], ["Tomatoes"]
         )

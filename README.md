@@ -1,20 +1,34 @@
 # Restaurant Kitchen Service
 
-Веб-застосунок на Django для керування кухнею ресторану. У ньому можна вести меню страв із цінами, описами та фото, групувати страви за категоріями, зберігати список інгредієнтів і бачити, у яких стравах вони використовуються, а також керувати командою кухарів і призначати відповідальних за кожну страву. Є пошук, фільтрація за категоріями, пагінація та сторінка огляду кухні зі статистикою; доступ до сайту мають лише зареєстровані кухарі.
+A Django web app for managing a restaurant kitchen. You can keep a menu of dishes with prices, descriptions and photos, group dishes into categories, maintain a list of ingredients and see which dishes use them, and manage the team of cooks by assigning who is responsible for each dish. It has search, category filtering, pagination and a kitchen overview page with statistics; only registered cooks can access the site.
 
-## Скріншоти
+## Getting started
 
-### Огляд кухні
-![Огляд кухні](screenshots/overview.png)
+```
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
 
-### Страви
-![Страви](screenshots/dishes.png)
+Set your own `SECRET_KEY` in `.env`.
 
-### Категорії страв
-![Категорії страв](screenshots/categories.png)
+## Screenshots
 
-### Кухарі
-![Кухарі](screenshots/cooks.png)
+### Kitchen overview
+![Kitchen overview](screenshots/overview.png)
 
-### Інгредієнти
-![Інгредієнти](screenshots/ingredients.png)
+### Dishes
+![Dishes](screenshots/dishes.png)
+
+### Dish categories
+![Dish categories](screenshots/categories.png)
+
+### Cooks
+![Cooks](screenshots/cooks.png)
+
+### Ingredients
+![Ingredients](screenshots/ingredients.png)

@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="page">
-  <a href="{% url 'kitchen:dish-category-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До категорій</a>
+  <a href="{% url 'kitchen:dish-category-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> Back to categories</a>
   {% with dishes=object.dishes.all %}
   <form action="" method="post" class="confirm-card">
     {% csrf_token %}
     {% if dishes %}
       <span class="confirm-card__icon confirm-card__icon--warn"><svg class="i"><use href="#i-alert"/></svg></span>
-      <h1 class="confirm-card__title">Категорію не можна видалити</h1>
-      <p>У категорії <strong>{{ object.name }}</strong> є страви ({{ dishes|length }}). Спочатку перенесіть їх в іншу категорію або видаліть.</p>
+      <h1 class="confirm-card__title">This category cannot be deleted</h1>
+      <p>The category <strong>{{ object.name }}</strong> still has dishes ({{ dishes|length }}). Move them to another category or delete them first.</p>
       <div class="chips">{% for dish in dishes %}<span class="chip">{{ dish.name }}</span>{% endfor %}</div>
       <div class="form-actions">
-        <a href="{% url 'kitchen:dish-list' %}?category={{ object.id }}" class="btn-main"><svg class="i"><use href="#i-dish"/></svg> Перейти до страв</a>
-        <a href="{% url 'kitchen:dish-category-list' %}" class="btn-ghost">Назад</a>
+        <a href="{% url 'kitchen:dish-list' %}?category={{ object.id }}" class="btn-main"><svg class="i"><use href="#i-dish"/></svg> Go to dishes</a>
+        <a href="{% url 'kitchen:dish-category-list' %}" class="btn-ghost">Back</a>
       </div>
     {% else %}
       <span class="confirm-card__icon"><svg class="i"><use href="#i-trash"/></svg></span>
-      <h1 class="confirm-card__title">Видалити категорію?</h1>
-      <p>Категорію <strong>{{ object.name }}</strong> буде видалено. У ній немає страв, тож нічого іншого не зміниться.</p>
+      <h1 class="confirm-card__title">Delete this category?</h1>
+      <p>The category <strong>{{ object.name }}</strong> will be deleted. It has no dishes, so nothing else will change.</p>
       <div class="form-actions">
-        <button type="submit" class="btn-danger-main"><svg class="i"><use href="#i-trash"/></svg> Так, видалити</button>
-        <a href="{% url 'kitchen:dish-category-list' %}" class="btn-ghost">Скасувати</a>
+        <button type="submit" class="btn-danger-main"><svg class="i"><use href="#i-trash"/></svg> Yes, delete</button>
+        <a href="{% url 'kitchen:dish-category-list' %}" class="btn-ghost">Cancel</a>
       </div>
     {% endif %}
   </form>

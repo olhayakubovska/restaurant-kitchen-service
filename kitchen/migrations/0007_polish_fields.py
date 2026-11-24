@@ -16,8 +16,8 @@ class Migration(migrations.Migration):
             name="cook",
             options={
                 "ordering": ["username"],
-                "verbose_name": "кухар",
-                "verbose_name_plural": "кухарі",
+                "verbose_name": "cook",
+                "verbose_name_plural": "cooks",
             },
         ),
         migrations.AlterField(
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             field=models.TextField(
                 blank=True,
                 validators=[django.core.validators.MaxLengthValidator(500)],
-                verbose_name="Опис",
+                verbose_name="Description",
             ),
         ),
         migrations.AlterField(
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 on_delete=django.db.models.deletion.PROTECT,
                 related_name="dishes",
                 to="kitchen.dishcategory",
-                verbose_name="Категорія",
+                verbose_name="Category",
             ),
         ),
         migrations.AlterField(
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 decimal_places=2,
                 max_digits=8,
                 validators=[django.core.validators.MinValueValidator(0)],
-                verbose_name="Ціна, грн",
+                verbose_name="Price, UAH",
             ),
         ),
     ]

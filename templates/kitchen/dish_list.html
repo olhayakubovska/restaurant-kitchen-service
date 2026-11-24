@@ -3,23 +3,23 @@
 <div class="page">
   <div class="page__header">
     <div>
-      <h1 class="page__title">Страви <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
-      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Меню кухні: склад, ціни та відповідальні кухарі</p>
+      <h1 class="page__title">Dishes <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Kitchen menu: ingredients, prices and responsible cooks</p>
     </div>
-    <a href="{% url 'kitchen:dish-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> Додати нову страву</a>
+    <a href="{% url 'kitchen:dish-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> Add new dish</a>
   </div>
 
   <div class="toolbar">
     <form action="" method="get" class="search-bar">
       <svg class="i search-bar__icon"><use href="#i-search"/></svg>
-      <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Пошук страви за назвою…" class="search-bar__input">
+      <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Search dishes by name…" class="search-bar__input">
       {% if active_category %}<input type="hidden" name="category" value="{{ active_category }}">{% endif %}
-      <button type="submit" class="btn-main">Знайти</button>
+      <button type="submit" class="btn-main">Search</button>
     </form>
 
     <div class="filter-chips">
-      <span class="filter-chips__label"><svg class="i"><use href="#i-category"/></svg> Типи:</span>
-      <a href="?{% if search_form.name.value %}name={{ search_form.name.value|urlencode }}{% endif %}" class="filter-chip {% if not active_category %}filter-chip--active{% endif %}">Усі</a>
+      <span class="filter-chips__label"><svg class="i"><use href="#i-category"/></svg> Categories:</span>
+      <a href="?{% if search_form.name.value %}name={{ search_form.name.value|urlencode }}{% endif %}" class="filter-chip {% if not active_category %}filter-chip--active{% endif %}">All</a>
       {% for category in categories %}
         <a href="?category={{ category.id }}{% if search_form.name.value %}&name={{ search_form.name.value|urlencode }}{% endif %}" class="filter-chip {% if active_category == category.id|stringformat:'s' %}filter-chip--active{% endif %}">{{ category.name }}</a>
       {% endfor %}
@@ -35,7 +35,7 @@
           <h2 class="dish-card__name">{{ dish.name }}</h2>
           <div class="dish-card__badges">
             <span class="badge"><svg class="i"><use href="#i-category"/></svg> {{ dish.dish_category.name }}</span>
-            <span class="badge badge--price"><svg class="i"><use href="#i-price"/></svg> {{ dish.price|floatformat:2 }} грн</span>
+            <span class="badge badge--price"><svg class="i"><use href="#i-price"/></svg> {{ dish.price|floatformat:2 }} UAH</span>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
 
       <div class="dish-card__cols">
         <div>
-          <p class="mini-title"><svg class="i"><use href="#i-users"/></svg> Відповідальні кухарі</p>
+          <p class="mini-title"><svg class="i"><use href="#i-users"/></svg> Responsible cooks</p>
           <ul class="people">
             {% for cook in dish.cooks.all %}
               <li>
@@ -54,31 +54,31 @@
                 {% if cook.first_name %}{{ cook.first_name }}{% if cook.last_name %} {{ cook.last_name|first }}.{% endif %}{% else %}{{ cook.username }}{% endif %}
               </li>
             {% empty %}
-              <li class="muted">не призначено</li>
+              <li class="muted">not assigned</li>
             {% endfor %}
           </ul>
         </div>
         <div>
-          <p class="mini-title"><svg class="i"><use href="#i-ingredient"/></svg> Склад</p>
+          <p class="mini-title"><svg class="i"><use href="#i-ingredient"/></svg> Ingredients</p>
           <ul class="dot-list">
             {% for ingredient in dish.ingredients.all %}
               <li>{{ ingredient.name|lower }}</li>
             {% empty %}
-              <li class="muted">не вказано</li>
+              <li class="muted">not specified</li>
             {% endfor %}
           </ul>
         </div>
       </div>
 
       <div class="card__footer">
-        <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn-main btn-sm"><svg class="i"><use href="#i-edit"/></svg> Редагувати</a>
-        <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="icon-btn icon-btn--delete" title="Видалити" aria-label="Видалити"><svg class="i"><use href="#i-trash"/></svg></a>
+        <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn-main btn-sm"><svg class="i"><use href="#i-edit"/></svg> Edit</a>
+        <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="icon-btn icon-btn--delete" title="Delete" aria-label="Delete"><svg class="i"><use href="#i-trash"/></svg></a>
       </div>
     </li>
     {% empty %}
     <li class="empty-state empty-state--big">
       <svg class="i"><use href="#i-empty"/></svg>
-      <span>Страв не знайдено.{% if search_form.name.value or active_category %} <a href="{% url 'kitchen:dish-list' %}">Скинути фільтри</a>{% endif %}</span>
+      <span>No dishes found.{% if search_form.name.value or active_category %} <a href="{% url 'kitchen:dish-list' %}">Reset filters</a>{% endif %}</span>
     </li>
     {% endfor %}
   </ul>

@@ -1,18 +1,18 @@
 {% with current=request.resolver_match.url_name %}
 <nav class="sidebar">
   <ul class="sidebar-nav">
-    <li><a href="{% url 'kitchen:index' %}" class="{% if current == 'index' %}active{% endif %}"><svg class="i"><use href="#i-home"/></svg> Огляд кухні</a></li>
-    <li><a href="{% url 'kitchen:dish-list' %}" class="{% if current == 'dish-list' or current == 'dish-create' or current == 'dish-update' or current == 'dish-delete' %}active{% endif %}"><svg class="i"><use href="#i-dish"/></svg> Страви</a></li>
-    <li><a href="{% url 'kitchen:dish-category-list' %}" class="{% if current|slice:':13' == 'dish-category' %}active{% endif %}"><svg class="i"><use href="#i-category"/></svg> Категорії страв</a></li>
-    <li><a href="{% url 'kitchen:cook-list' %}" class="{% if current|slice:':4' == 'cook' %}active{% endif %}"><svg class="i"><use href="#i-users"/></svg> Кухарі</a></li>
-    <li><a href="{% url 'kitchen:ingredient-list' %}" class="{% if current|slice:':10' == 'ingredient' %}active{% endif %}"><svg class="i"><use href="#i-ingredient"/></svg> Інгредієнти</a></li>
+    <li><a href="{% url 'kitchen:index' %}" class="{% if current == 'index' %}active{% endif %}"><svg class="i"><use href="#i-home"/></svg> Kitchen overview</a></li>
+    <li><a href="{% url 'kitchen:dish-list' %}" class="{% if current == 'dish-list' or current == 'dish-create' or current == 'dish-update' or current == 'dish-delete' %}active{% endif %}"><svg class="i"><use href="#i-dish"/></svg> Dishes</a></li>
+    <li><a href="{% url 'kitchen:dish-category-list' %}" class="{% if current|slice:':13' == 'dish-category' %}active{% endif %}"><svg class="i"><use href="#i-category"/></svg> Dish categories</a></li>
+    <li><a href="{% url 'kitchen:cook-list' %}" class="{% if current|slice:':4' == 'cook' %}active{% endif %}"><svg class="i"><use href="#i-users"/></svg> Cooks</a></li>
+    <li><a href="{% url 'kitchen:ingredient-list' %}" class="{% if current|slice:':10' == 'ingredient' %}active{% endif %}"><svg class="i"><use href="#i-ingredient"/></svg> Ingredients</a></li>
   </ul>
 
   {% if user.is_authenticated %}
     <div class="sidebar__quick">
-      <span class="sidebar__label">Швидкі дії</span>
-      <a href="{% url 'kitchen:dish-create' %}"><svg class="i"><use href="#i-plus"/></svg> Нова страва</a>
-      <a href="{% url 'kitchen:ingredient-create' %}"><svg class="i"><use href="#i-plus"/></svg> Новий інгредієнт</a>
+      <span class="sidebar__label">Quick actions</span>
+      <a href="{% url 'kitchen:dish-create' %}"><svg class="i"><use href="#i-plus"/></svg> New dish</a>
+      <a href="{% url 'kitchen:ingredient-create' %}"><svg class="i"><use href="#i-plus"/></svg> New ingredient</a>
     </div>
   {% endif %}
 </nav>

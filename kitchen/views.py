@@ -60,20 +60,20 @@ class DishCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView
     model = Dish
     form_class = DishForm
     success_url = reverse_lazy("kitchen:dish-list")
-    success_message = "Страву «%(name)s» створено."
+    success_message = "Dish “%(name)s” was created."
 
 
 class DishUpdateView(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
     model = Dish
     form_class = DishForm
     success_url = reverse_lazy("kitchen:dish-list")
-    success_message = "Страву «%(name)s» збережено."
+    success_message = "Dish “%(name)s” was saved."
 
 
 class DishDeleteView(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
     model = Dish
     success_url = reverse_lazy("kitchen:dish-list")
-    success_message = "Страву видалено."
+    success_message = "Dish was deleted."
 
 
 class DishCategoryListView(LoginRequiredMixin, SearchMixin, generic.ListView):
@@ -89,7 +89,7 @@ class DishCategoryCreateView(
     model = DishCategory
     fields = ("name",)
     success_url = reverse_lazy("kitchen:dish-category-list")
-    success_message = "Категорію «%(name)s» створено."
+    success_message = "Category “%(name)s” was created."
 
 
 class DishCategoryUpdateView(
@@ -98,7 +98,7 @@ class DishCategoryUpdateView(
     model = DishCategory
     fields = ("name",)
     success_url = reverse_lazy("kitchen:dish-category-list")
-    success_message = "Категорію «%(name)s» збережено."
+    success_message = "Category “%(name)s” was saved."
 
 
 class DishCategoryDeleteView(
@@ -106,7 +106,7 @@ class DishCategoryDeleteView(
 ):
     model = DishCategory
     success_url = reverse_lazy("kitchen:dish-category-list")
-    success_message = "Категорію видалено."
+    success_message = "Category was deleted."
 
     def form_valid(self, form):
         try:
@@ -114,7 +114,7 @@ class DishCategoryDeleteView(
         except ProtectedError:
             messages.error(
                 self.request,
-                f"Неможливо видалити «{self.object.name}»: у категорії є страви.",
+                f"Cannot delete “{self.object.name}”: the category still has dishes.",
             )
             return redirect("kitchen:dish-category-list")
 
@@ -130,7 +130,7 @@ class CookCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView
     model = Cook
     form_class = CookCreationForm
     success_url = reverse_lazy("kitchen:cook-list")
-    success_message = "Кухаря «%(username)s» додано до команди."
+    success_message = "Cook “%(username)s” was added to the team."
 
 
 class IngredientListView(LoginRequiredMixin, SearchMixin, generic.ListView):
@@ -144,17 +144,17 @@ class IngredientCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.Crea
     model = Ingredient
     fields = ("name",)
     success_url = reverse_lazy("kitchen:ingredient-list")
-    success_message = "Інгредієнт «%(name)s» додано."
+    success_message = "Ingredient “%(name)s” was added."
 
 
 class IngredientUpdateView(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
     model = Ingredient
     fields = ("name",)
     success_url = reverse_lazy("kitchen:ingredient-list")
-    success_message = "Інгредієнт «%(name)s» збережено."
+    success_message = "Ingredient “%(name)s” was saved."
 
 
 class IngredientDeleteView(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
     model = Ingredient
     success_url = reverse_lazy("kitchen:ingredient-list")
-    success_message = "Інгредієнт видалено."
+    success_message = "Ingredient was deleted."

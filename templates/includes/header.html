@@ -1,7 +1,7 @@
 <header class="topbar">
   <a href="{% url 'kitchen:index' %}" class="topbar-brand">
     <svg class="topbar-brand__logo"><use href="#i-logo"/></svg>
-    <span>Керування кухнею</span>
+    <span>Kitchen Manager</span>
   </a>
 
   {% if user.is_authenticated %}
@@ -16,19 +16,19 @@
       <div class="topbar-user__menu">
         <div class="topbar-user__info">
           <strong>{{ user.get_full_name|default:user.username }}</strong>
-          <span><svg class="i"><use href="#i-award"/></svg> досвід: {{ user.experience }} р.</span>
-          {% if user.is_superuser %}<span><svg class="i"><use href="#i-shield"/></svg> адміністратор</span>{% endif %}
+          <span><svg class="i"><use href="#i-award"/></svg> experience: {{ user.experience }} yr.</span>
+          {% if user.is_superuser %}<span><svg class="i"><use href="#i-shield"/></svg> administrator</span>{% endif %}
         </div>
         {% if user.is_staff %}
-          <a href="{% url 'admin:index' %}"><svg class="i"><use href="#i-lock"/></svg> Адмін-панель</a>
+          <a href="{% url 'admin:index' %}"><svg class="i"><use href="#i-lock"/></svg> Admin panel</a>
         {% endif %}
         <form action="{% url 'logout' %}" method="post">
           {% csrf_token %}
-          <button type="submit"><svg class="i"><use href="#i-logout"/></svg> Вийти</button>
+          <button type="submit"><svg class="i"><use href="#i-logout"/></svg> Log out</button>
         </form>
       </div>
     </details>
   {% else %}
-    <a href="{% url 'login' %}" class="topbar-login"><svg class="i"><use href="#i-login"/></svg> Увійти</a>
+    <a href="{% url 'login' %}" class="topbar-login"><svg class="i"><use href="#i-login"/></svg> Log in</a>
   {% endif %}
 </header>

@@ -9,8 +9,8 @@ class CookCreationFormTests(TestCase):
         form = CookCreationForm(
             data={
                 "username": "iryna",
-                "first_name": "Ірина",
-                "last_name": "Бондар",
+                "first_name": "Iryna",
+                "last_name": "Bondar",
                 "email": "iryna@example.com",
                 "experience": 2,
                 "password1": "Sup3r-secret-pass",
@@ -39,16 +39,16 @@ class CookCreationFormTests(TestCase):
 
 class DishFormTests(TestCase):
     def setUp(self):
-        self.category = DishCategory.objects.create(name="Салати")
+        self.category = DishCategory.objects.create(name="Salads")
         self.cook = Cook.objects.create_user(username="sofiia")
-        self.ingredient = Ingredient.objects.create(name="Огірки")
+        self.ingredient = Ingredient.objects.create(name="Cucumbers")
 
     def test_valid_form_saves_relations(self):
         form = DishForm(
             data={
-                "name": "Грецький салат",
+                "name": "Greek salad",
                 "price": "150.00",
-                "description": "Свіжі овочі",
+                "description": "Fresh vegetables",
                 "dish_category": self.category.pk,
                 "cooks": [self.cook.pk],
                 "ingredients": [self.ingredient.pk],
@@ -63,7 +63,7 @@ class DishFormTests(TestCase):
     def test_negative_price_is_invalid(self):
         form = DishForm(
             data={
-                "name": "Салат",
+                "name": "Salad",
                 "price": "-1",
                 "dish_category": self.category.pk,
             }

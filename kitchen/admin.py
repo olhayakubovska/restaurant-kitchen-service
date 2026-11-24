@@ -7,9 +7,11 @@ from kitchen.models import Cook, Dish, DishCategory, Ingredient
 @admin.register(Cook)
 class CookAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("experience",)
-    fieldsets = UserAdmin.fieldsets + (("Кухня", {"fields": ("experience", "photo")}),)
+    fieldsets = UserAdmin.fieldsets + (
+        ("Kitchen", {"fields": ("experience", "photo")}),
+    )
     add_fieldsets = UserAdmin.add_fieldsets + (
-        ("Кухня", {"fields": ("first_name", "last_name", "experience")}),
+        ("Kitchen", {"fields": ("first_name", "last_name", "experience")}),
     )
 
 

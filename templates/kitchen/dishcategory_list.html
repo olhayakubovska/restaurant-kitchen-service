@@ -3,16 +3,16 @@
 <div class="page">
   <div class="page__header">
     <div>
-      <h1 class="page__title">Категорії страв <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
-      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Розділи меню, за якими згруповані страви</p>
+      <h1 class="page__title">Dish categories <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Menu sections that group the dishes</p>
     </div>
-    <a href="{% url 'kitchen:dish-category-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> Нова категорія</a>
+    <a href="{% url 'kitchen:dish-category-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> New category</a>
   </div>
 
   <form action="" method="get" class="search-bar">
     <svg class="i search-bar__icon"><use href="#i-search"/></svg>
-    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Пошук категорії…" class="search-bar__input">
-    <button type="submit" class="btn-main">Знайти</button>
+    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Search categories…" class="search-bar__input">
+    <button type="submit" class="btn-main">Search</button>
   </form>
 
   <ul class="card-grid">
@@ -24,32 +24,32 @@
         <div class="category-card__body">
           <h2 class="category-card__name">{{ category.name }}</h2>
           <span class="category-card__sub">
-            {% if first %}Приклад: {{ first.name }}{% else %}Поки без страв{% endif %}
+            {% if first %}For example: {{ first.name }}{% else %}No dishes yet{% endif %}
           </span>
         </div>
-        <span class="count-pill"><svg class="i"><use href="#i-dish"/></svg> {{ count }} {% if count == 1 %}страва{% elif count >= 2 and count <= 4 %}страви{% else %}страв{% endif %}</span>
+        <span class="count-pill"><svg class="i"><use href="#i-dish"/></svg> {{ count }} dish{{ count|pluralize:"es" }}</span>
       </div>
 
       {% if count %}
         {% with dishes=category.dishes.all %}
                 <div class="chips">
                   {% for dish in dishes %}<span class="chip{% if forloop.counter > 4 %} chip--extra{% endif %}">{{ dish.name }}</span>{% empty %}{% endfor %}
-                  {% if dishes|length > 4 %}<button type="button" class="chip chip--more" onclick="this.parentElement.classList.toggle('chips--open')"><span class="chip--more__closed">ще {{ dishes|length|add:"-4" }}…</span><span class="chip--more__open">згорнути</span></button>{% endif %}
+                  {% if dishes|length > 4 %}<button type="button" class="chip chip--more" onclick="this.parentElement.classList.toggle('chips--open')"><span class="chip--more__closed">{{ dishes|length|add:"-4" }} more…</span><span class="chip--more__open">show less</span></button>{% endif %}
                 </div>
         {% endwith %}
       {% endif %}
 
       <div class="card__footer">
-        <a href="{% url 'kitchen:dish-list' %}?category={{ category.id }}" class="btn-ghost btn-sm"><svg class="i"><use href="#i-dish"/></svg> Страви</a>
+        <a href="{% url 'kitchen:dish-list' %}?category={{ category.id }}" class="btn-ghost btn-sm"><svg class="i"><use href="#i-dish"/></svg> Dishes</a>
         <span class="actions">
-          <a href="{% url 'kitchen:dish-category-update' pk=category.id %}" class="btn-main btn-sm"><svg class="i"><use href="#i-edit"/></svg> Редагувати</a>
-          <a href="{% url 'kitchen:dish-category-delete' pk=category.id %}" class="icon-btn icon-btn--delete" title="Видалити" aria-label="Видалити"><svg class="i"><use href="#i-trash"/></svg></a>
+          <a href="{% url 'kitchen:dish-category-update' pk=category.id %}" class="btn-main btn-sm"><svg class="i"><use href="#i-edit"/></svg> Edit</a>
+          <a href="{% url 'kitchen:dish-category-delete' pk=category.id %}" class="icon-btn icon-btn--delete" title="Delete" aria-label="Delete"><svg class="i"><use href="#i-trash"/></svg></a>
         </span>
       </div>
     </li>
     {% endwith %}
     {% empty %}
-    <li class="empty-state empty-state--big"><svg class="i"><use href="#i-empty"/></svg> <span>Категорій не знайдено.</span></li>
+    <li class="empty-state empty-state--big"><svg class="i"><use href="#i-empty"/></svg> <span>No categories found.</span></li>
     {% endfor %}
   </ul>
 

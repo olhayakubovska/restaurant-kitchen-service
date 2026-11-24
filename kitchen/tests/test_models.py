@@ -8,41 +8,41 @@ from kitchen.models import Cook, Dish, DishCategory, Ingredient
 
 class ModelStrTests(TestCase):
     def test_dish_category_str(self):
-        category = DishCategory.objects.create(name="Супи")
-        self.assertEqual(str(category), "Супи")
+        category = DishCategory.objects.create(name="Soups")
+        self.assertEqual(str(category), "Soups")
 
     def test_ingredient_str(self):
-        ingredient = Ingredient.objects.create(name="Томати")
-        self.assertEqual(str(ingredient), "Томати")
+        ingredient = Ingredient.objects.create(name="Tomatoes")
+        self.assertEqual(str(ingredient), "Tomatoes")
 
     def test_cook_str_uses_full_name(self):
         cook = Cook.objects.create_user(
-            username="taras", first_name="Тарас", last_name="Шевчук"
+            username="taras", first_name="Taras", last_name="Shevchuk"
         )
-        self.assertEqual(str(cook), "Тарас Шевчук")
+        self.assertEqual(str(cook), "Taras Shevchuk")
 
     def test_cook_str_falls_back_to_username(self):
         cook = Cook.objects.create_user(username="taras")
         self.assertEqual(str(cook), "taras")
 
     def test_dish_str(self):
-        category = DishCategory.objects.create(name="Супи")
+        category = DishCategory.objects.create(name="Soups")
         dish = Dish.objects.create(
-            name="Борщ", price=Decimal("140.00"), dish_category=category
+            name="Borscht", price=Decimal("140.00"), dish_category=category
         )
-        self.assertEqual(str(dish), "Борщ")
+        self.assertEqual(str(dish), "Borscht")
 
 
 class DishRelationTests(TestCase):
     def setUp(self):
-        self.category = DishCategory.objects.create(name="Паста")
+        self.category = DishCategory.objects.create(name="Pasta")
         self.dish = Dish.objects.create(
-            name="Карбонара", price=Decimal("245.00"), dish_category=self.category
+            name="Carbonara", price=Decimal("245.00"), dish_category=self.category
         )
 
     def test_cooks_and_ingredients_are_reachable_from_both_sides(self):
         cook = Cook.objects.create_user(username="maria")
-        bacon = Ingredient.objects.create(name="Бекон")
+        bacon = Ingredient.objects.create(name="Bacon")
         self.dish.cooks.add(cook)
         self.dish.ingredients.add(bacon)
 
@@ -54,7 +54,7 @@ class DishRelationTests(TestCase):
             self.category.delete()
 
     def test_deleting_ingredient_keeps_dish(self):
-        bacon = Ingredient.objects.create(name="Бекон")
+        bacon = Ingredient.objects.create(name="Bacon")
         self.dish.ingredients.add(bacon)
         bacon.delete()
 

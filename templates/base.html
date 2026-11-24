@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
-    {% block title %}<title>Керування кухнею</title>{% endblock %}
+    {% block title %}<title>Kitchen Manager</title>{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
                     <div class="toast-msg toast-msg--{{ message.tags }}" role="status">
                         <svg class="i"><use href="#{% if message.tags == 'error' %}i-alert{% else %}i-check{% endif %}"/></svg>
                         <span>{{ message }}</span>
-                        <button type="button" class="toast-msg__close" aria-label="Закрити" onclick="this.parentElement.remove()"><svg class="i"><use href="#i-x"/></svg></button>
+                        <button type="button" class="toast-msg__close" aria-label="Close" onclick="this.parentElement.remove()"><svg class="i"><use href="#i-x"/></svg></button>
                     </div>
                 {% endfor %}
             </div>

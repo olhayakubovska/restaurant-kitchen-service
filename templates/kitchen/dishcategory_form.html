@@ -2,20 +2,20 @@
 {% load crispy_forms_filters %}
 {% block content %}
 <div class="page">
-  <a href="{% url 'kitchen:dish-category-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До категорій</a>
+  <a href="{% url 'kitchen:dish-category-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> Back to categories</a>
   <div class="page__header">
     <div>
-      <h1 class="page__title">{% if object %}Редагування категорії{% else %}Нова категорія{% endif %}</h1>
-      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Наприклад: Супи, Десерти, Паста</p>
+      <h1 class="page__title">{% if object %}Edit category{% else %}New category{% endif %}</h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> For example: Soups, Desserts, Pasta</p>
     </div>
   </div>
   <form method="post" novalidate class="form-card form-card--narrow">
     {% csrf_token %}
-    <div class="form-card__head"><span class="thumb thumb--terracotta"><svg class="i"><use href="#i-category"/></svg></span> Категорія страв</div>
+    <div class="form-card__head"><span class="thumb thumb--terracotta"><svg class="i"><use href="#i-category"/></svg></span> Dish category</div>
     {{ form|crispy }}
     <div class="form-actions">
-      <button type="submit" class="btn-main"><svg class="i"><use href="#i-check"/></svg> Зберегти</button>
-      <a href="{% url 'kitchen:dish-category-list' %}" class="btn-ghost">Скасувати</a>
+      <button type="submit" class="btn-main"><svg class="i"><use href="#i-check"/></svg> Save</button>
+      <a href="{% url 'kitchen:dish-category-list' %}" class="btn-ghost">Cancel</a>
     </div>
   </form>
 </div>

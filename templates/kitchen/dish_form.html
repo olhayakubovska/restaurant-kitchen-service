@@ -2,19 +2,19 @@
 {% load crispy_forms_filters %}
 {% block content %}
 <div class="page">
-  <a href="{% url 'kitchen:dish-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До списку страв</a>
+  <a href="{% url 'kitchen:dish-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> Back to dishes</a>
   <div class="page__header">
     <div>
-      <h1 class="page__title">{% if object %}Редагування страви{% else %}Створення нової страви{% endif %}</h1>
-      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> {% if object %}Змініть дані страви «{{ object.name }}» і збережіть.{% else %}Заповніть назву, ціну, тип і оберіть кухарів та інгредієнти.{% endif %}</p>
+      <h1 class="page__title">{% if object %}Edit dish{% else %}Create a new dish{% endif %}</h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> {% if object %}Update the details of “{{ object.name }}” and save.{% else %}Fill in the name, price and category, then choose cooks and ingredients.{% endif %}</p>
     </div>
   </div>
   <form method="post" enctype="multipart/form-data" novalidate class="form-card dish-form">
     {% csrf_token %}
     {{ form|crispy }}
     <div class="form-actions">
-      <button type="submit" class="btn-main"><svg class="i"><use href="#i-check"/></svg> Зберегти</button>
-      <a href="{% url 'kitchen:dish-list' %}" class="btn-ghost">Скасувати</a>
+      <button type="submit" class="btn-main"><svg class="i"><use href="#i-check"/></svg> Save</button>
+      <a href="{% url 'kitchen:dish-list' %}" class="btn-ghost">Cancel</a>
     </div>
   </form>
 </div>
