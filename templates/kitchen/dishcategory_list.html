@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <div class="page__header">
+    <div>
+      <h1 class="page__title">Категорії страв <span class="count-badge">{{ page_obj.paginator.count }}</span></h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Розділи меню, за якими згруповані страви</p>
+    </div>
+    <a href="{% url 'kitchen:dish-category-create' %}" class="btn-main"><svg class="i"><use href="#i-plus"/></svg> Нова категорія</a>
+  </div>
+
+  <form action="" method="get" class="search-bar">
+    <svg class="i search-bar__icon"><use href="#i-search"/></svg>
+    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Пошук категорії…" class="search-bar__input">
+    <button type="submit" class="btn-main">Знайти</button>
+  </form>
+
+  <ul class="card-grid">
+    {% for category in dishcategory_list %}
+    {% with count=category.dishes.all|length first=category.dishes.all|first %}
+    <li class="card category-card">
+      <div class="category-card__head">
+        <span class="thumb thumb--terracotta"><svg class="i"><use href="#i-category"/></svg></span>
+        <div class="category-card__body">
+          <h2 class="category-card__name">{{ category.name }}</h2>
+          <span class="category-card__sub">
+            {% if first %}Приклад: {{ first.name }}{% else %}Поки без страв{% endif %}
+          </span>
+        </div>
+        <span class="count-pill"><svg class="i"><use href="#i-dish"/></svg> {{ count }} {% if count == 1 %}страва{% elif count >= 2 and count <= 4 %}страви{% else %}страв{% endif %}</span>
+      </div>
+
+      {% if count %}
+        {% with dishes=category.dishes.all %}
+                <div class="chips">
+                  {% for dish in dishes %}<span class="chip{% if forloop.counter > 4 %} chip--extra{% endif %}">{{ dish.name }}</span>{% empty %}{% endfor %}
+                  {% if dishes|length > 4 %}<button type="button" class="chip chip--more" onclick="this.parentElement.classList.toggle('chips--open')"><span class="chip--more__closed">ще {{ dishes|length|add:"-4" }}…</span><span class="chip--more__open">згорнути</span></button>{% endif %}
+                </div>
+        {% endwith %}
+      {% endif %}
+
+      <div class="card__footer">
+        <a href="{% url 'kitchen:dish-list' %}?category={{ category.id }}" class="btn-ghost btn-sm"><svg class="i"><use href="#i-dish"/></svg> Страви</a>
+        <span class="actions">
+          <a href="{% url 'kitchen:dish-category-update' pk=category.id %}" class="btn-main btn-sm"><svg class="i"><use href="#i-edit"/></svg> Редагувати</a>
+          <a href="{% url 'kitchen:dish-category-delete' pk=category.id %}" class="icon-btn icon-btn--delete" title="Видалити" aria-label="Видалити"><svg class="i"><use href="#i-trash"/></svg></a>
+        </span>
+      </div>
+    </li>
+    {% endwith %}
+    {% empty %}
+    <li class="empty-state empty-state--big"><svg class="i"><use href="#i-empty"/></svg> <span>Категорій не знайдено.</span></li>
+    {% endfor %}
+  </ul>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

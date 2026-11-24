@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <a href="{% url 'kitchen:ingredient-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До інгредієнтів</a>
+  <form action="" method="post" class="confirm-card">
+    {% csrf_token %}
+    <span class="confirm-card__icon"><svg class="i"><use href="#i-trash"/></svg></span>
+    <h1 class="confirm-card__title">Видалити інгредієнт?</h1>
+    {% with dishes=object.dishes.all %}
+      {% if dishes %}
+        <p>Інгредієнт <strong>{{ object.name }}</strong> буде прибрано зі складу {{ dishes|length }} страв:</p>
+        <div class="chips">{% for dish in dishes %}<span class="chip">{{ dish.name }}</span>{% endfor %}</div>
+      {% else %}
+        <p>Інгредієнт <strong>{{ object.name }}</strong> не використовується в жодній страві.</p>
+      {% endif %}
+    {% endwith %}
+    <div class="form-actions">
+      <button type="submit" class="btn-danger-main"><svg class="i"><use href="#i-trash"/></svg> Так, видалити</button>
+      <a href="{% url 'kitchen:ingredient-list' %}" class="btn-ghost">Скасувати</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

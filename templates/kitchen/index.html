@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <div class="page__header">
+    <h1 class="page__title">Огляд кухні</h1>
+  </div>
+
+  <div class="stats">
+    <a href="{% url 'kitchen:dish-list' %}" class="stat">
+      <span class="stat__label">Всього страв:</span>
+      <span class="stat__value">{{ num_dishes }}</span>
+    </a>
+    <a href="{% url 'kitchen:dish-category-list' %}" class="stat">
+      <span class="stat__label">Категорій:</span>
+      <span class="stat__value">{{ num_categories }}</span>
+    </a>
+    <a href="{% url 'kitchen:cook-list' %}" class="stat">
+      <span class="stat__label">Кухарів:</span>
+      <span class="stat__value">{{ num_cooks }}</span>
+    </a>
+    <a href="{% url 'kitchen:ingredient-list' %}" class="stat">
+      <span class="stat__label">Інгредієнтів:</span>
+      <span class="stat__value">{{ num_ingredients }}</span>
+    </a>
+  </div>
+
+  <div class="overview">
+    <section>
+      <div class="overview__head">
+        <h2 class="section-title">Нові страви в меню</h2>
+        <a href="{% url 'kitchen:dish-list' %}" class="link-more">Усі страви <svg class="i"><use href="#i-chevron-right"/></svg></a>
+      </div>
+      <ul class="overview-list">
+        {% for dish in latest_dishes %}
+          <li>
+            <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="overview-item">
+              {% if dish.image %}<img src="{{ dish.image.url }}" alt="" class="thumb thumb--photo">{% else %}<span class="thumb"><svg class="i"><use href="#i-dish"/></svg></span>{% endif %}
+              <span class="overview-item__body">
+                <span class="overview-item__name">{{ dish.name }}</span>
+                <span class="overview-item__sub">{{ dish.dish_category.name }} · {{ dish.price|floatformat:0 }} грн</span>
+              </span>
+              <span class="avatar-stack">
+                {% for cook in dish.cooks.all %}
+                  {% if cook.photo %}<img src="{{ cook.photo.url }}" alt="" class="avatar" title="{{ cook }}">{% else %}<span class="avatar" title="{{ cook }}">{{ cook.first_name|default:cook.username|first|upper }}</span>{% endif %}
+                {% endfor %}
+              </span>
+              <svg class="i overview-item__arrow"><use href="#i-chevron-right"/></svg>
+            </a>
+          </li>
+        {% empty %}
+          <li class="empty-state">Страв поки немає.</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section>
+      <div class="overview__head">
+        <h2 class="section-title">Команда</h2>
+        <a href="{% url 'kitchen:cook-list' %}" class="link-more">Усі <svg class="i"><use href="#i-chevron-right"/></svg></a>
+      </div>
+      <ul class="overview-team">
+        {% for cook in cooks %}
+          <li>
+            {% if cook.photo %}<img src="{{ cook.photo.url }}" alt="" class="avatar">{% else %}<span class="avatar">{{ cook.first_name|default:cook.username|first|upper }}</span>{% endif %}
+            <span class="overview-item__body">
+              <span class="overview-item__name">{% if cook.first_name %}{{ cook.first_name }}{% if cook.last_name %} {{ cook.last_name|first }}.{% endif %}{% else %}{{ cook.username }}{% endif %}</span>
+              <span class="overview-item__sub">досвід {{ cook.experience }} р.</span>
+            </span>
+            <span class="count-pill" title="Страв">{{ cook.num_dishes }} <svg class="i"><use href="#i-dish"/></svg></span>
+          </li>
+        {% empty %}
+          <li class="empty-state">Кухарів поки немає.</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+
+  <section class="overview-categories">
+    <div class="overview__head">
+      <h2 class="section-title">Популярні категорії</h2>
+      <a href="{% url 'kitchen:dish-category-list' %}" class="link-more">Усі <svg class="i"><use href="#i-chevron-right"/></svg></a>
+    </div>
+    <div class="category-tiles">
+      {% for category in categories %}
+        <a href="{% url 'kitchen:dish-list' %}?category={{ category.id }}" class="category-tile">
+          <span>{{ category.name }}</span>
+          <strong>{{ category.num_dishes }}</strong>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}

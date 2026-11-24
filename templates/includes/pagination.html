@@ -1,0 +1,27 @@
+{% if is_paginated %}
+<nav class="pagination-bar" aria-label="Сторінки">
+  <ul class="pager">
+    {% if page_obj.has_previous %}
+      <li><a href="{% querystring page=page_obj.previous_page_number %}" class="pager__link" aria-label="Попередня"><svg class="i pager__prev"><use href="#i-chevron-right"/></svg></a></li>
+    {% else %}
+      <li><span class="pager__link pager__link--disabled"><svg class="i pager__prev"><use href="#i-chevron-right"/></svg></span></li>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if num == page_obj.number %}
+        <li><span class="pager__link pager__link--active" aria-current="page">{{ num }}</span></li>
+      {% elif num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+        <li><a href="{% querystring page=num %}" class="pager__link">{{ num }}</a></li>
+      {% elif num == page_obj.number|add:"-3" or num == page_obj.number|add:"3" %}
+        <li><span class="pager__dots">…</span></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <li><a href="{% querystring page=page_obj.next_page_number %}" class="pager__link" aria-label="Наступна"><svg class="i"><use href="#i-chevron-right"/></svg></a></li>
+    {% else %}
+      <li><span class="pager__link pager__link--disabled"><svg class="i"><use href="#i-chevron-right"/></svg></span></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}

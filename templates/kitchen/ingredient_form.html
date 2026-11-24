@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="page">
+  <a href="{% url 'kitchen:ingredient-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До інгредієнтів</a>
+  <div class="page__header">
+    <div>
+      <h1 class="page__title">{% if object %}Редагування інгредієнта{% else %}Новий інгредієнт{% endif %}</h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> До страв інгредієнт додається у формі страви.</p>
+    </div>
+  </div>
+  <form action="" method="post" novalidate class="form-card form-card--narrow">
+    {% csrf_token %}
+    <div class="form-card__head"><span class="thumb thumb--olive"><svg class="i"><use href="#i-ingredient"/></svg></span> Інгредієнт</div>
+    {{ form|crispy }}
+    {% if object and object.dishes.all %}
+      <p class="mini-title"><svg class="i"><use href="#i-dish"/></svg> Використовується в:</p>
+      <div class="chips">{% for dish in object.dishes.all %}<span class="chip">{{ dish.name }}</span>{% endfor %}</div>
+    {% endif %}
+    <div class="form-actions">
+      <button type="submit" class="btn-main"><svg class="i"><use href="#i-check"/></svg> Зберегти</button>
+      <a href="{% url 'kitchen:ingredient-list' %}" class="btn-ghost">Скасувати</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

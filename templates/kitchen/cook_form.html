@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="page">
+  <a href="{% url 'kitchen:cook-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> До команди</a>
+  <div class="page__header">
+    <div>
+      <h1 class="page__title">{% if object %}Редагування кухаря{% else %}Новий співробітник{% endif %}</h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Логін і пароль знадобляться кухарю для входу на сайт.</p>
+    </div>
+  </div>
+  <form method="post" enctype="multipart/form-data" novalidate class="form-card form-card--narrow">
+    {% csrf_token %}
+    <div class="form-card__head"><span class="thumb thumb--gold"><svg class="i"><use href="#i-users"/></svg></span> Дані кухаря</div>
+    {{ form|crispy }}
+    <div class="form-actions">
+      <button type="submit" class="btn-main"><svg class="i"><use href="#i-check"/></svg> Зберегти</button>
+      <a href="{% url 'kitchen:cook-list' %}" class="btn-ghost">Скасувати</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
