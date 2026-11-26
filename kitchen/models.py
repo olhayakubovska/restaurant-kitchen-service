@@ -1,6 +1,8 @@
+from decimal import Decimal
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MaxLengthValidator, MinValueValidator
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -44,16 +46,12 @@ class Cook(AbstractUser):
 class Dish(models.Model):
     name = models.CharField("Dish name", max_length=255, unique=True)
     image = models.ImageField("Dish photo", upload_to="dishes/", blank=True)
-    description = models.TextField(
-        "Description",
-        blank=True,
-        validators=[MaxLengthValidator(500)],
-    )
+    description = models.TextField("Description", blank=True, max_length=500)
     price = models.DecimalField(
         "Price, UAH",
         max_digits=8,
         decimal_places=2,
-        validators=[MinValueValidator(0)],
+        validators=[MinValueValidator(Decimal("0.01"))],
     )
     dish_category = models.ForeignKey(
         DishCategory,
