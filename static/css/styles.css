@@ -1113,41 +1113,66 @@ a:hover {
   grid-template-areas:
     "name price"
     "description description"
-    "type cooks"
-    "ingredients ingredients"
+    "image image"
+    "type ."
     "actions actions";
   gap: 0 24px;
 }
 
 .dish-form #div_id_name { grid-area: name; }
 .dish-form #div_id_price { grid-area: price; }
+.dish-form #div_id_image { grid-area: image; }
 .dish-form #div_id_description { grid-area: description; }
 .dish-form #div_id_dish_category { grid-area: type; }
-.dish-form #div_id_cooks { grid-area: cooks; }
-.dish-form #div_id_ingredients { grid-area: ingredients; }
 .dish-form .form-actions { grid-area: actions; }
 
 .dish-form textarea.form-control {
   height: 96px;
 }
 
-.dish-form #div_id_cooks > div,
-.dish-form #div_id_ingredients > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 10px;
-  border: 1px solid var(--input-line);
-  border-radius: 8px;
-  background: #fff;
+.selected-box {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
 }
 
-.dish-form #div_id_cooks .form-check,
-.dish-form #div_id_ingredients .form-check {
+form.chip {
   margin: 0;
-  padding: 4px 12px 4px 30px;
-  border-radius: 999px;
-  background: var(--sand);
+  padding-right: 5px;
+}
+
+.chip__remove {
+  display: inline-flex;
+  padding: 2px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.chip__remove:hover {
+  background: var(--terracotta-soft);
+  color: var(--terracotta-dark);
+}
+
+.chip__remove .i {
+  width: 12px;
+  height: 12px;
+}
+
+.data-table__actions form {
+  display: inline;
+}
+
+.data-table__name .avatar {
+  margin-right: 4px;
+}
+
+.page > .filter-chips {
+  margin-bottom: 16px;
 }
 
 .confirm-card {
@@ -1482,9 +1507,8 @@ a:hover {
       "name"
       "price"
       "description"
+      "image"
       "type"
-      "cooks"
-      "ingredients"
       "actions";
   }
 }

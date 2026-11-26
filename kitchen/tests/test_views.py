@@ -84,8 +84,10 @@ class DishCrudTests(LoggedInTestCase):
             reverse("kitchen:dish-create"),
             {"name": "Varenyky", "price": "125", "dish_category": self.soups.pk},
         )
-        self.assertRedirects(response, reverse("kitchen:dish-list"))
-        self.assertTrue(Dish.objects.filter(name="Varenyky").exists())
+        dish = Dish.objects.get(name="Varenyky")
+        self.assertRedirects(
+            response, reverse("kitchen:dish-ingredients", args=[dish.pk])
+        )
 
     def test_update_dish(self):
         self.client.post(
@@ -130,3 +132,102 @@ class CookAndIngredientTests(LoggedInTestCase):
         self.assertEqual(
             [i.name for i in response.context["ingredient_list"]], ["Tomatoes"]
         )
+
+
+class CookCrudTests(LoggedInTestCase):
+    def setUp(self):
+        super().setUp()
+        self.cook = Cook.objects.create_user(
+            username="cook7", first_name="Maria", last_name="Vovk"
+        )
+
+    def test_cook_search_by_first_name(self):
+        response = self.client.get(reverse("kitchen:cook-list"), {"name": "mari"})
+        self.assertEqual(list(response.context["cook_list"]), [self.cook])
+
+    def test_cook_search_by_last_name(self):
+        response = self.client.get(reverse("kitchen:cook-list"), {"name": "vovk"})
+        self.assertEqual(list(response.context["cook_list"]), [self.cook])
+
+    def test_update_cook(self):
+        response = self.client.post(
+            reverse("kitchen:cook-update", args=[self.cook.pk]),
+            {"username": "cook7", "first_name": "Maria", "experience": "7"},
+        )
+        self.assertRedirects(response, reverse("kitchen:cook-list"))
+        self.cook.refresh_from_db()
+        self.assertEqual(self.cook.experience, 7)
+
+    def test_delete_cook(self):
+        self.client.post(reverse("kitchen:cook-delete", args=[self.cook.pk]))
+        self.assertFalse(Cook.objects.filter(pk=self.cook.pk).exists())
+
+    def test_cannot_delete_own_account(self):
+        response = self.client.post(
+            reverse("kitchen:cook-delete", args=[self.user.pk]), follow=True
+        )
+        self.assertTrue(Cook.objects.filter(pk=self.user.pk).exists())
+        self.assertContains(response, "You cannot delete your own account.")
+
+
+class DishRelationTests(LoggedInTestCase):
+    def setUp(self):
+        super().setUp()
+        self.tomatoes = Ingredient.objects.create(name="Tomatoes")
+        self.bacon = Ingredient.objects.create(name="Bacon")
+
+    def test_ingredients_page_search(self):
+        response = self.client.get(
+            reverse("kitchen:dish-ingredients", args=[self.borscht.pk]),
+            {"name": "tom"},
+        )
+        self.assertEqual(list(response.context["ingredient_list"]), [self.tomatoes])
+
+    def test_ingredients_page_is_paginated(self):
+        for i in range(12):
+            Ingredient.objects.create(name=f"Spice {i}")
+        response = self.client.get(
+            reverse("kitchen:dish-ingredients", args=[self.borscht.pk])
+        )
+        self.assertEqual(len(response.context["ingredient_list"]), 10)
+
+    def test_add_and_remove_ingredient(self):
+        add_url = reverse(
+            "kitchen:dish-ingredient-add", args=[self.borscht.pk, self.tomatoes.pk]
+        )
+        response = self.client.post(add_url + "?name=tom&page=1")
+        self.assertRedirects(
+            response,
+            reverse("kitchen:dish-ingredients", args=[self.borscht.pk])
+            + "?name=tom&page=1",
+        )
+        self.assertIn(self.tomatoes, self.borscht.ingredients.all())
+
+        self.client.post(
+            reverse(
+                "kitchen:dish-ingredient-remove",
+                args=[self.borscht.pk, self.tomatoes.pk],
+            )
+        )
+        self.assertNotIn(self.tomatoes, self.borscht.ingredients.all())
+
+    def test_add_and_remove_cook(self):
+        cook = Cook.objects.create_user(username="anna")
+        self.client.post(
+            reverse("kitchen:dish-cook-add", args=[self.borscht.pk, cook.pk])
+        )
+        self.assertIn(cook, self.borscht.cooks.all())
+
+        self.client.post(
+            reverse("kitchen:dish-cook-remove", args=[self.borscht.pk, cook.pk])
+        )
+        self.assertNotIn(cook, self.borscht.cooks.all())
+
+    def test_get_does_not_change_dish(self):
+        response = self.client.get(
+            reverse(
+                "kitchen:dish-ingredient-add", args=[self.borscht.pk, self.bacon.pk]
+            )
+        )
+        self.assertEqual(response.status_code, 405)
+        self.assertFalse(self.borscht.ingredients.exists())

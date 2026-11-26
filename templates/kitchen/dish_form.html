@@ -6,9 +6,10 @@
   <div class="page__header">
     <div>
       <h1 class="page__title">{% if object %}Edit dish{% else %}Create a new dish{% endif %}</h1>
-      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> {% if object %}Update the details of “{{ object.name }}” and save.{% else %}Fill in the name, price and category, then choose cooks and ingredients.{% endif %}</p>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> {% if object %}Update the details of “{{ object.name }}” and save.{% else %}Fill in the name, price and category. Ingredients and cooks are added on the next step.{% endif %}</p>
     </div>
   </div>
+  {% if object %}{% with dish=object %}{% include "includes/dish_tabs.html" %}{% endwith %}{% endif %}
   <form method="post" enctype="multipart/form-data" novalidate class="form-card dish-form">
     {% csrf_token %}
     {{ form|crispy }}

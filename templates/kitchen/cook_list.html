@@ -11,7 +11,7 @@
 
   <form action="" method="get" class="search-bar">
     <svg class="i search-bar__icon"><use href="#i-search"/></svg>
-    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Search cooks by username…" class="search-bar__input">
+    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Search cooks by name or username…" class="search-bar__input">
     <button type="submit" class="btn-main">Search</button>
   </form>
 
@@ -43,6 +43,14 @@
                   {% if dishes|length > 4 %}<button type="button" class="chip chip--more" onclick="this.parentElement.classList.toggle('chips--open')"><span class="chip--more__closed">{{ dishes|length|add:"-4" }} more…</span><span class="chip--more__open">show less</span></button>{% endif %}
                 </div>
         {% endwith %}
+
+        <div class="card__footer">
+          <span></span>
+          <span class="actions">
+            <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn-main btn-sm"><svg class="i"><use href="#i-edit"/></svg> Edit</a>
+            {% if cook != user %}<a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="icon-btn icon-btn--delete" title="Delete" aria-label="Delete"><svg class="i"><use href="#i-trash"/></svg></a>{% endif %}
+          </span>
+        </div>
       </div>
       {% endwith %}
     {% empty %}

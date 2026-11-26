@@ -1,0 +1,7 @@
+{% with current=request.resolver_match.url_name %}
+<div class="filter-chips">
+  <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="filter-chip {% if current == 'dish-update' %}filter-chip--active{% endif %}">Details</a>
+  <a href="{% url 'kitchen:dish-ingredients' pk=dish.id %}" class="filter-chip {% if current == 'dish-ingredients' %}filter-chip--active{% endif %}">Ingredients</a>
+  <a href="{% url 'kitchen:dish-cooks' pk=dish.id %}" class="filter-chip {% if current == 'dish-cooks' %}filter-chip--active{% endif %}">Cooks</a>
+</div>
+{% endwith %}

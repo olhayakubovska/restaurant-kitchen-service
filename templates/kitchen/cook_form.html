@@ -6,7 +6,7 @@
   <div class="page__header">
     <div>
       <h1 class="page__title">{% if object %}Edit cook{% else %}New team member{% endif %}</h1>
-      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> The cook will use this username and password to log in.</p>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> {% if object %}Update the details of {{ object.username }}.{% else %}The cook will use this username and password to log in.{% endif %}</p>
     </div>
   </div>
   <form method="post" enctype="multipart/form-data" novalidate class="form-card form-card--narrow">

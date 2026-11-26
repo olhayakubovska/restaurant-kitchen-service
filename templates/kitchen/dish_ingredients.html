@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <a href="{% url 'kitchen:dish-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> Back to dishes</a>
+  <div class="page__header">
+    <div>
+      <h1 class="page__title">Ingredients of “{{ dish.name }}” <span class="count-badge">{{ selected|length }}</span></h1>
+      <p class="page__subtitle"><svg class="i"><use href="#i-info"/></svg> Find an ingredient and add it to the dish. Changes are saved right away.</p>
+    </div>
+  </div>
+
+  {% include "includes/dish_tabs.html" %}
+
+  <div class="selected-box">
+    <p class="mini-title"><svg class="i"><use href="#i-check"/></svg> In this dish</p>
+    <div class="chips">
+      {% for ingredient in selected %}
+        <form action="{% url 'kitchen:dish-ingredient-remove' pk=dish.id item_pk=ingredient.id %}{% querystring %}" method="post" class="chip">
+          {% csrf_token %}
+          {{ ingredient.name }}
+          <button type="submit" class="chip__remove" title="Remove" aria-label="Remove"><svg class="i"><use href="#i-x"/></svg></button>
+        </form>
+      {% empty %}
+        <span class="muted">No ingredients yet.</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <form action="" method="get" class="search-bar">
+    <svg class="i search-bar__icon"><use href="#i-search"/></svg>
+    <input type="text" name="name" value="{{ search_form.name.value|default:'' }}" placeholder="Search ingredients…" class="search-bar__input">
+    <button type="submit" class="btn-main">Search</button>
+  </form>
+
+  <div class="table-card">
+    <table class="data-table">
+      <tbody>
+        {% for ingredient in ingredient_list %}
+          <tr>
+            <td class="data-table__name"><span class="thumb thumb--olive thumb--sm"><svg class="i"><use href="#i-ingredient"/></svg></span> {{ ingredient.name }}</td>
+            <td class="data-table__actions">
+              {% if ingredient in selected %}
+                <form action="{% url 'kitchen:dish-ingredient-remove' pk=dish.id item_pk=ingredient.id %}{% querystring %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-ghost btn-sm"><svg class="i"><use href="#i-x"/></svg> Remove</button>
+                </form>
+              {% else %}
+                <form action="{% url 'kitchen:dish-ingredient-add' pk=dish.id item_pk=ingredient.id %}{% querystring %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-main btn-sm"><svg class="i"><use href="#i-plus"/></svg> Add</button>
+                </form>
+              {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="2" class="empty-state"><svg class="i"><use href="#i-empty"/></svg> No ingredients found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% include "includes/pagination.html" %}
+</div>
+{% endblock %}

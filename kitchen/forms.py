@@ -16,6 +16,19 @@ class CookCreationForm(UserCreationForm):
         )
 
 
+class CookUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "experience",
+            "photo",
+        )
+
+
 class DishForm(forms.ModelForm):
     class Meta:
         model = Dish
@@ -25,13 +38,7 @@ class DishForm(forms.ModelForm):
             "price",
             "description",
             "dish_category",
-            "cooks",
-            "ingredients",
         )
-        widgets = {
-            "cooks": forms.CheckboxSelectMultiple,
-            "ingredients": forms.CheckboxSelectMultiple,
-        }
 
 
 class SearchForm(forms.Form):

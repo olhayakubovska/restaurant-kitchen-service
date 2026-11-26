@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page">
+  <a href="{% url 'kitchen:cook-list' %}" class="back-link"><svg class="i"><use href="#i-back"/></svg> Back to team</a>
+  <form action="" method="post" class="confirm-card">
+    {% csrf_token %}
+    <span class="confirm-card__icon"><svg class="i"><use href="#i-trash"/></svg></span>
+    <h1 class="confirm-card__title">Remove this cook?</h1>
+    <p>The cook <strong>{{ object.get_full_name|default:object.username }}</strong> will be removed from the team and will no longer be able to log in. This action cannot be undone.</p>
+    <ul class="confirm-card__facts">
+      <li><svg class="i"><use href="#i-user"/></svg> {{ object.username }}</li>
+      <li><svg class="i"><use href="#i-info"/></svg> Their dishes will stay on the menu</li>
+    </ul>
+    <div class="form-actions">
+      <button type="submit" class="btn-danger-main"><svg class="i"><use href="#i-trash"/></svg> Yes, remove</button>
+      <a href="{% url 'kitchen:cook-list' %}" class="btn-ghost">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

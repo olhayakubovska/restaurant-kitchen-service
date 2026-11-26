@@ -1,4 +1,4 @@
-from django.db.models import QuerySet
+from django.db.models import Q, QuerySet
 from django.http import HttpRequest
 
 from kitchen.forms import SearchForm
@@ -6,7 +6,7 @@ from kitchen.forms import SearchForm
 
 class SearchMixin:
     request: HttpRequest
-    search_field: str | None = None
+    search_fields: tuple[str, ...] = ()
     search_param = "name"
 
     def get_search_value(self) -> str:
@@ -16,8 +16,11 @@ class SearchMixin:
         queryset = super().get_queryset()
         value = self.get_search_value()
 
-        if value and self.search_field:
-            queryset = queryset.filter(**{f"{self.search_field}__icontains": value})
+        if value and self.search_fields:
+            query = Q()
+            for field in self.search_fields:
+                query |= Q(**{f"{field}__icontains": value})
+            queryset = queryset.filter(query)
 
         return queryset
 

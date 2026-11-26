@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from kitchen.forms import CookCreationForm, DishForm
-from kitchen.models import Cook, DishCategory, Ingredient
+from kitchen.models import DishCategory
 
 
 class CookCreationFormTests(TestCase):
@@ -40,31 +40,37 @@ class CookCreationFormTests(TestCase):
 class DishFormTests(TestCase):
     def setUp(self):
         self.category = DishCategory.objects.create(name="Salads")
-        self.cook = Cook.objects.create_user(username="sofiia")
-        self.ingredient = Ingredient.objects.create(name="Cucumbers")
 
-    def test_valid_form_saves_relations(self):
+    def test_valid_form_saves_dish(self):
         form = DishForm(
             data={
                 "name": "Greek salad",
                 "price": "150.00",
                 "description": "Fresh vegetables",
                 "dish_category": self.category.pk,
-                "cooks": [self.cook.pk],
-                "ingredients": [self.ingredient.pk],
             }
         )
         self.assertTrue(form.is_valid(), form.errors)
 
         dish = form.save()
-        self.assertEqual(list(dish.cooks.all()), [self.cook])
-        self.assertEqual(list(dish.ingredients.all()), [self.ingredient])
+        self.assertEqual(dish.dish_category, self.category)
 
     def test_negative_price_is_invalid(self):
         form = DishForm(
             data={
                 "name": "Salad",
                 "price": "-1",
+                "dish_category": self.category.pk,
+            }
+        )
+        self.assertFalse(form.is_valid())
+        self.assertIn("price", form.errors)
+
+    def test_zero_price_is_invalid(self):
+        form = DishForm(
+            data={
+                "name": "Salad",
+                "price": "0",
                 "dish_category": self.category.pk,
             }
         )
