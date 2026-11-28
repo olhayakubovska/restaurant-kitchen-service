@@ -2,6 +2,8 @@
 
 A Django web app for managing a restaurant kitchen. You can keep a menu of dishes with prices, descriptions and photos, group dishes into categories, maintain a list of ingredients and see which dishes use them, and manage the team of cooks by assigning who is responsible for each dish. It has search, category filtering, pagination and a kitchen overview page with statistics; only registered cooks can access the site.
 
+**Live demo:** https://restaurant-kitchen-service-uxx5.onrender.com
+
 ## Test user
 
 You can log in with a test account:
