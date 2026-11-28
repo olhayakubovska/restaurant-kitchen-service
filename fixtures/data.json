@@ -1,0 +1,1431 @@
+[
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Закуски"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Десерти"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 4,
+    "fields": {
+      "name": "Салати"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 5,
+    "fields": {
+      "name": "Перші страви"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 6,
+    "fields": {
+      "name": "Основні страви"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 7,
+    "fields": {
+      "name": "Паста"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 8,
+    "fields": {
+      "name": "Піца"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 9,
+    "fields": {
+      "name": "Випічка"
+    }
+  },
+  {
+    "model": "kitchen.dishcategory",
+    "pk": 10,
+    "fields": {
+      "name": "Напої"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 1,
+    "fields": {
+      "name": "Томати"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 2,
+    "fields": {
+      "name": "Бекон"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 3,
+    "fields": {
+      "name": "Борошно"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 4,
+    "fields": {
+      "name": "Яйця"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 6,
+    "fields": {
+      "name": "Картопля"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 7,
+    "fields": {
+      "name": "Цибуля"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 8,
+    "fields": {
+      "name": "Часник"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 9,
+    "fields": {
+      "name": "Морква"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 10,
+    "fields": {
+      "name": "Буряк"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 11,
+    "fields": {
+      "name": "Капуста"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 12,
+    "fields": {
+      "name": "Сметана"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 13,
+    "fields": {
+      "name": "Вершки"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 14,
+    "fields": {
+      "name": "Вершкове масло"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 15,
+    "fields": {
+      "name": "Оливкова олія"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 16,
+    "fields": {
+      "name": "Сир пармезан"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 17,
+    "fields": {
+      "name": "Сир моцарела"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 18,
+    "fields": {
+      "name": "Кисломолочний сир"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 19,
+    "fields": {
+      "name": "Маскарпоне"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 20,
+    "fields": {
+      "name": "Куряче філе"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 21,
+    "fields": {
+      "name": "Свинина"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 22,
+    "fields": {
+      "name": "Яловичина"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 23,
+    "fields": {
+      "name": "Лосось"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 24,
+    "fields": {
+      "name": "Креветки"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 25,
+    "fields": {
+      "name": "Гриби печериці"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 26,
+    "fields": {
+      "name": "Спагеті"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 27,
+    "fields": {
+      "name": "Рис"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 28,
+    "fields": {
+      "name": "Гречка"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 29,
+    "fields": {
+      "name": "Огірки"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 30,
+    "fields": {
+      "name": "Болгарський перець"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 31,
+    "fields": {
+      "name": "Салат айсберг"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 32,
+    "fields": {
+      "name": "Рукола"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 33,
+    "fields": {
+      "name": "Базилік"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 34,
+    "fields": {
+      "name": "Кріп"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 35,
+    "fields": {
+      "name": "Петрушка"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 36,
+    "fields": {
+      "name": "Цукор"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 37,
+    "fields": {
+      "name": "Мед"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 38,
+    "fields": {
+      "name": "Шоколад"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 39,
+    "fields": {
+      "name": "Вишня"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 40,
+    "fields": {
+      "name": "Яблука"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 41,
+    "fields": {
+      "name": "Лимон"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 42,
+    "fields": {
+      "name": "М'ята"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 43,
+    "fields": {
+      "name": "Кава"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 44,
+    "fields": {
+      "name": "Молоко"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 45,
+    "fields": {
+      "name": "Чіабата"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 46,
+    "fields": {
+      "name": "Сухарі"
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 1,
+    "fields": {
+      "password": "!QuH2xYy0cxDZAfW2ifDFwDG3B0UGHCX4aqtrCc7F",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ola",
+      "first_name": "Ольга",
+      "last_name": "Коваленко",
+      "email": "o@gamil.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T11:35:30.691Z",
+      "experience": 6,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 2,
+    "fields": {
+      "password": "!MZfh92FfhejkL0VjA1Bi7PNEGrPsTWkTnyYqBY3L",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ivan",
+      "first_name": "Іван",
+      "last_name": "Іваненко",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T12:13:36Z",
+      "experience": 4,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 3,
+    "fields": {
+      "password": "!DxuyQyQTJh0qbqtPsrxO4K9O59HH4rzNNSdFunpR",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "anna",
+      "first_name": "Анна",
+      "last_name": "Чорна",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T12:28:43.151Z",
+      "experience": 3,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 4,
+    "fields": {
+      "password": "!LB4Z3kDdMv9zTwKtWO8jijrFu73KTsqgno8oiHnl",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "oleksandr",
+      "first_name": "Олександр",
+      "last_name": "Петренко",
+      "email": "oleksandr@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:11.853Z",
+      "experience": 5,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 5,
+    "fields": {
+      "password": "!mAj8zcssMo5Qb988FQg4eS3V9KDHCYD1pRlwlt5n",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "maria",
+      "first_name": "Марія",
+      "last_name": "Вовк",
+      "email": "maria@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:12.487Z",
+      "experience": 8,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 6,
+    "fields": {
+      "password": "!jrN8OE2RVcdPmxCLnpmtkMF3JLRXuhXzEDXvU9St",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "taras",
+      "first_name": "Тарас",
+      "last_name": "Шевчук",
+      "email": "taras@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:13.102Z",
+      "experience": 12,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 7,
+    "fields": {
+      "password": "!43ZBjmbTPNH51Fs3p4W3ZEot5HmznRyAWITuLgDM",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "iryna",
+      "first_name": "Ірина",
+      "last_name": "Бондар",
+      "email": "iryna@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:13.737Z",
+      "experience": 2,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 8,
+    "fields": {
+      "password": "!aHVcGmkk1onZUNf1OYOkSuwfishVUq3GTIrcMDFM",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "dmytro",
+      "first_name": "Дмитро",
+      "last_name": "Мельник",
+      "email": "dmytro@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:14.365Z",
+      "experience": 7,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 9,
+    "fields": {
+      "password": "!DAqn19bpjYn1Vuq02jqIxTWvysRkf6b7XybtDAVi",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "sofiia",
+      "first_name": "Софія",
+      "last_name": "Ткаченко",
+      "email": "sofiia@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:15.007Z",
+      "experience": 1,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 10,
+    "fields": {
+      "password": "!8CZnVpO5KKWfskIilnIhK9eEtWTVPogj2xIaOEev",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "andrii",
+      "first_name": "Андрій",
+      "last_name": "Кравченко",
+      "email": "andrii@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:15.640Z",
+      "experience": 10,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 11,
+    "fields": {
+      "password": "!Ral3DLoUsggZTrwUd4s3kGRJyJUnOxpVAOnmDXNq",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "kateryna",
+      "first_name": "Катерина",
+      "last_name": "Олійник",
+      "email": "kateryna@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:16.268Z",
+      "experience": 4,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 12,
+    "fields": {
+      "password": "!Ha01S7KrP2i6HU1QDDqspBVOFsDaCfNBHsdQY35H",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "bohdan",
+      "first_name": "Богдан",
+      "last_name": "Лисенко",
+      "email": "bohdan@kitchen.example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T14:55:16.906Z",
+      "experience": 3,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$1500000$ukpiXqhARCf4ugeotqTetv$xAd0M5NDhx820M3gVuO5+pZc/28qZRYcGnZDBlckwcU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test_cook",
+      "first_name": "Test",
+      "last_name": "Cook",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-24T12:13:36Z",
+      "experience": 1,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 1,
+    "fields": {
+      "name": "Курка Альфредо",
+      "image": "",
+      "description": "Вершкова паста з куркою гриль, сиром пармезан та часниковим соусом.",
+      "price": "260.00",
+      "dish_category": 7,
+      "ingredients": [
+        13,
+        14,
+        20,
+        16,
+        26,
+        8
+      ],
+      "cooks": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 5,
+    "fields": {
+      "name": "Наполеон",
+      "image": "",
+      "description": "Листкові коржі з ніжним заварним кремом.",
+      "price": "120.00",
+      "dish_category": 3,
+      "ingredients": [
+        3,
+        14,
+        44,
+        36,
+        4
+      ],
+      "cooks": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 6,
+    "fields": {
+      "name": "Тірамісу",
+      "image": "",
+      "description": "Італійський десерт із савоярді, маскарпоне та кавою.",
+      "price": "150.00",
+      "dish_category": 3,
+      "ingredients": [
+        43,
+        19,
+        36,
+        38,
+        4
+      ],
+      "cooks": [
+        3,
+        1
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 7,
+    "fields": {
+      "name": "Сирники",
+      "image": "",
+      "description": "Пухкі сирники зі сметаною та ягідним соусом.",
+      "price": "110.00",
+      "dish_category": 3,
+      "ingredients": [
+        3,
+        18,
+        12,
+        36,
+        4
+      ],
+      "cooks": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 8,
+    "fields": {
+      "name": "Брускета з томатами",
+      "image": "",
+      "description": "Хрустка чіабата з томатами, базиліком та оливковою олією.",
+      "price": "95.00",
+      "dish_category": 2,
+      "ingredients": [
+        33,
+        15,
+        1,
+        8,
+        45
+      ],
+      "cooks": [
+        2,
+        11
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 9,
+    "fields": {
+      "name": "Деруни з беконом",
+      "image": "",
+      "description": "Картопляні деруни з хрустким беконом та сметаною.",
+      "price": "130.00",
+      "dish_category": 2,
+      "ingredients": [
+        2,
+        3,
+        6,
+        12,
+        7,
+        4
+      ],
+      "cooks": [
+        2,
+        1
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 10,
+    "fields": {
+      "name": "Сало з часником і грінками",
+      "image": "",
+      "description": "Домашнє сало з часником, житні грінки та зелена цибуля.",
+      "price": "110.00",
+      "dish_category": 2,
+      "ingredients": [
+        21,
+        7,
+        8
+      ],
+      "cooks": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 11,
+    "fields": {
+      "name": "Тарталетки з лососем",
+      "image": "",
+      "description": "Ніжний крем-сир, слабосолоний лосось і кріп у хрусткому тісті.",
+      "price": "165.00",
+      "dish_category": 2,
+      "ingredients": [
+        3,
+        14,
+        18,
+        34,
+        23
+      ],
+      "cooks": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 12,
+    "fields": {
+      "name": "Салат Цезар з куркою",
+      "image": "",
+      "description": "Курка гриль, айсберг, пармезан, грінки та фірмовий соус.",
+      "price": "185.00",
+      "dish_category": 4,
+      "ingredients": [
+        20,
+        31,
+        16,
+        46,
+        8,
+        4
+      ],
+      "cooks": [
+        7,
+        4
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 13,
+    "fields": {
+      "name": "Грецький салат",
+      "image": "",
+      "description": "Свіжі овочі, оливки, сир та оливкова олія.",
+      "price": "150.00",
+      "dish_category": 4,
+      "ingredients": [
+        30,
+        29,
+        15,
+        1,
+        7
+      ],
+      "cooks": [
+        7
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 14,
+    "fields": {
+      "name": "Вінегрет",
+      "image": "",
+      "description": "Класичний овочевий салат з буряком і квашеною капустою.",
+      "price": "90.00",
+      "dish_category": 4,
+      "ingredients": [
+        10,
+        11,
+        6,
+        9,
+        29,
+        7
+      ],
+      "cooks": [
+        3,
+        9
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 15,
+    "fields": {
+      "name": "Салат з креветками та руколою",
+      "image": "",
+      "description": "Тигрові креветки, рукола, томати черрі та пармезан.",
+      "price": "235.00",
+      "dish_category": 4,
+      "ingredients": [
+        24,
+        41,
+        15,
+        32,
+        16,
+        1
+      ],
+      "cooks": [
+        8,
+        5
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 16,
+    "fields": {
+      "name": "Український борщ",
+      "image": "",
+      "description": "Наваристий борщ на яловичині зі сметаною та пампушками.",
+      "price": "140.00",
+      "dish_category": 5,
+      "ingredients": [
+        10,
+        11,
+        6,
+        9,
+        12,
+        1,
+        7,
+        8,
+        22
+      ],
+      "cooks": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 17,
+    "fields": {
+      "name": "Курячий бульйон з локшиною",
+      "image": "",
+      "description": "Легкий бульйон з домашньою локшиною та зеленню.",
+      "price": "105.00",
+      "dish_category": 5,
+      "ingredients": [
+        3,
+        20,
+        9,
+        35,
+        7,
+        4
+      ],
+      "cooks": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 18,
+    "fields": {
+      "name": "Грибна юшка",
+      "image": "",
+      "description": "Ароматна юшка з печериць з картоплею та кропом.",
+      "price": "120.00",
+      "dish_category": 5,
+      "ingredients": [
+        25,
+        6,
+        34,
+        9,
+        12,
+        7
+      ],
+      "cooks": [
+        12
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 19,
+    "fields": {
+      "name": "Вареники з картоплею",
+      "image": "",
+      "description": "Домашні вареники з картоплею та смаженою цибулькою.",
+      "price": "125.00",
+      "dish_category": 6,
+      "ingredients": [
+        3,
+        14,
+        6,
+        12,
+        7
+      ],
+      "cooks": [
+        3,
+        11
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 20,
+    "fields": {
+      "name": "Вареники з вишнею",
+      "image": "",
+      "description": "Ніжне тісто з кислуватою вишнею, подаються з медом.",
+      "price": "135.00",
+      "dish_category": 3,
+      "ingredients": [
+        3,
+        39,
+        37,
+        12,
+        36
+      ],
+      "cooks": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 21,
+    "fields": {
+      "name": "Котлета по-київськи",
+      "image": "",
+      "description": "Куряче філе з вершковим маслом і зеленню в паніровці.",
+      "price": "220.00",
+      "dish_category": 6,
+      "ingredients": [
+        3,
+        14,
+        34,
+        20,
+        46,
+        4
+      ],
+      "cooks": [
+        10,
+        4
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 22,
+    "fields": {
+      "name": "Голубці",
+      "image": "",
+      "description": "Капустяні листки з м'ясом і рисом у томатно-сметанному соусі.",
+      "price": "175.00",
+      "dish_category": 6,
+      "ingredients": [
+        11,
+        9,
+        27,
+        21,
+        12,
+        1,
+        7
+      ],
+      "cooks": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 23,
+    "fields": {
+      "name": "Гречка з грибами",
+      "image": "",
+      "description": "Розсипчаста гречка з печерицями та цибулею.",
+      "price": "115.00",
+      "dish_category": 6,
+      "ingredients": [
+        14,
+        28,
+        25,
+        7
+      ],
+      "cooks": [
+        12,
+        9
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 24,
+    "fields": {
+      "name": "Стейк з яловичини",
+      "image": "",
+      "description": "Соковитий стейк середнього прожарювання з печеною картоплею.",
+      "price": "420.00",
+      "dish_category": 6,
+      "ingredients": [
+        14,
+        6,
+        35,
+        8,
+        22
+      ],
+      "cooks": [
+        10,
+        8
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 25,
+    "fields": {
+      "name": "Лосось на грилі",
+      "image": "",
+      "description": "Філе лосося з лимоном, рисом та овочами.",
+      "price": "390.00",
+      "dish_category": 6,
+      "ingredients": [
+        30,
+        41,
+        23,
+        15,
+        27
+      ],
+      "cooks": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 26,
+    "fields": {
+      "name": "Карбонара",
+      "image": "",
+      "description": "Спагеті з беконом, жовтками та пармезаном.",
+      "price": "245.00",
+      "dish_category": 7,
+      "ingredients": [
+        2,
+        13,
+        16,
+        26,
+        4
+      ],
+      "cooks": [
+        5,
+        4
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 27,
+    "fields": {
+      "name": "Паста з креветками",
+      "image": "",
+      "description": "Спагеті з креветками, томатами та базиліком.",
+      "price": "295.00",
+      "dish_category": 7,
+      "ingredients": [
+        33,
+        24,
+        15,
+        26,
+        1,
+        8
+      ],
+      "cooks": [
+        8
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 28,
+    "fields": {
+      "name": "Паста з грибами у вершках",
+      "image": "",
+      "description": "Ніжний вершковий соус з печерицями та пармезаном.",
+      "price": "215.00",
+      "dish_category": 7,
+      "ingredients": [
+        13,
+        25,
+        16,
+        26,
+        7
+      ],
+      "cooks": [
+        7,
+        11
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 29,
+    "fields": {
+      "name": "Піца Маргарита",
+      "image": "",
+      "description": "Класика: томатний соус, моцарела та свіжий базилік.",
+      "price": "195.00",
+      "dish_category": 8,
+      "ingredients": [
+        33,
+        3,
+        15,
+        17,
+        1
+      ],
+      "cooks": [
+        12,
+        8
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 30,
+    "fields": {
+      "name": "Піца з беконом і грибами",
+      "image": "",
+      "description": "Моцарела, бекон, печериці та цибуля.",
+      "price": "245.00",
+      "dish_category": 8,
+      "ingredients": [
+        2,
+        3,
+        25,
+        17,
+        1,
+        7
+      ],
+      "cooks": [
+        8
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 31,
+    "fields": {
+      "name": "Піца Чотири сири",
+      "image": "",
+      "description": "Моцарела, пармезан, кисломолочний сир і маскарпоне.",
+      "price": "265.00",
+      "dish_category": 8,
+      "ingredients": [
+        3,
+        18,
+        19,
+        17,
+        16
+      ],
+      "cooks": [
+        10,
+        12
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 32,
+    "fields": {
+      "name": "Пиріжки з капустою",
+      "image": "",
+      "description": "Пухкі печені пиріжки з тушкованою капустою.",
+      "price": "45.00",
+      "dish_category": 9,
+      "ingredients": [
+        3,
+        11,
+        9,
+        7,
+        4
+      ],
+      "cooks": [
+        11
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 33,
+    "fields": {
+      "name": "Пампушки з часником",
+      "image": "",
+      "description": "Ароматні пампушки до борщу з часниковою заправкою.",
+      "price": "55.00",
+      "dish_category": 9,
+      "ingredients": [
+        3,
+        34,
+        15,
+        8
+      ],
+      "cooks": [
+        9,
+        6
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 34,
+    "fields": {
+      "name": "Яблучна шарлотка",
+      "image": "",
+      "description": "Легкий бісквіт з соковитими яблуками та корицею.",
+      "price": "85.00",
+      "dish_category": 9,
+      "ingredients": [
+        3,
+        36,
+        40,
+        4
+      ],
+      "cooks": [
+        3,
+        1
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 35,
+    "fields": {
+      "name": "Шоколадний фондан",
+      "image": "",
+      "description": "Теплий шоколадний кекс з рідкою серцевиною.",
+      "price": "145.00",
+      "dish_category": 3,
+      "ingredients": [
+        3,
+        14,
+        36,
+        38,
+        4
+      ],
+      "cooks": [
+        7,
+        5
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 36,
+    "fields": {
+      "name": "Узвар",
+      "image": "",
+      "description": "Традиційний напій із сушених яблук, груш і слив з медом.",
+      "price": "40.00",
+      "dish_category": 10,
+      "ingredients": [
+        37,
+        40
+      ],
+      "cooks": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 37,
+    "fields": {
+      "name": "Домашній лимонад",
+      "image": "",
+      "description": "Освіжальний лимонад з м'ятою та медом.",
+      "price": "65.00",
+      "dish_category": 10,
+      "ingredients": [
+        41,
+        42,
+        37,
+        36
+      ],
+      "cooks": [
+        7
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 38,
+    "fields": {
+      "name": "Капучино",
+      "image": "",
+      "description": "Еспресо з ніжною молочною пінкою.",
+      "price": "60.00",
+      "dish_category": 10,
+      "ingredients": [
+        43,
+        44
+      ],
+      "cooks": [
+        11
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 39,
+    "fields": {
+      "name": "Вишневий компот",
+      "image": "",
+      "description": "Домашній компот з вишні.",
+      "price": "45.00",
+      "dish_category": 10,
+      "ingredients": [
+        39,
+        36
+      ],
+      "cooks": [
+        12
+      ]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 40,
+    "fields": {
+      "name": "carbonara",
+      "image": "",
+      "description": "Паста карбона́ра — спагетти или ригатони с мелкими кусочками щековины, смешанные с соусом из яиц, сыра пекорино романо, соли и свежемолотого чёрного перца.",
+      "price": "12.00",
+      "dish_category": 7,
+      "ingredients": [
+        33,
+        3
+      ],
+      "cooks": []
+    }
+  }
+]
